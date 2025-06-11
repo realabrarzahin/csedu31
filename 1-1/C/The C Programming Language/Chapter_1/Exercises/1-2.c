@@ -3,5 +3,5 @@
 int main(){
 	
 	printf("hello, world!\c"); // Unknown Escape Sequence
-	return 0;	
+	return 0;
 }
