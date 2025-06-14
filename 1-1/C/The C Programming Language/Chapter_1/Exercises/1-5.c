@@ -1,14 +1,14 @@
 #include<stdio.h>
 
+#define LOWER 0
+#define UPPER 300
+#define STEP 20
+
 int main(){
-	
-	int lower = 0;
-	int upper = 300;
-	int step = 20;
 	
 	float far;
 	printf("Cel\tFar\n");
-	for(int cel = upper; cel >= lower; cel -= step){
+	for(int cel = UPPER; cel >= LOWER; cel -= STEP){
 		far = (9.0/5.0) * cel + 32;
 		printf("%3d\t%3.2f\n",cel, far);
 	}
