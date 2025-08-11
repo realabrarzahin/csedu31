@@ -1,0 +1,2 @@
+lrwxrwxrwx  1 root root       39 May 17 05:09 resolv.conf -> ../run/systemd/resolve/stub-resolv.conf
+drwxr-xr-x  6 root root     4096 Jun 12 07:01 systemd

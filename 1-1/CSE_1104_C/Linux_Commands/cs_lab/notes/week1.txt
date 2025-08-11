@@ -1,0 +1,3 @@
+My name is antor.
+
+This is a nano based text. and I hate nano. I love vim. Hate vscode.
