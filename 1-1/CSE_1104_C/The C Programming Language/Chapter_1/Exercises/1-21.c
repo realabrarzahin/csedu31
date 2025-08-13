@@ -41,55 +41,54 @@ void print_line(char line[]) { printf("%s\n", line); };
 
 void entab_line(char line[], char line_entab[], int limit) {
 
-  int count_space = 0;
-  int space_flag = 0;
+  int space_start = 0;
+  int space_count = 0;
 
   int i = 0;
   int j = 0;
 
   while (line[i] != '\0' && limit--) {
 
-    if (line[i] == ' ' && !space_flag) {
+    if (line[i] == ' ' && !space_start) {
 
-      space_flag = 1;
-      count_space++;
+      space_start = 1;
+      space_count++;
+    } else if (line[i] == ' ' && space_start) {
 
-    } else if (line[i] == ' ' && space_flag) {
+      space_count++;
+    } else if (line[i] != ' ') {
 
-      count_space++;
+      space_start = 0;
 
-    } else if (line[i] != ' ' && space_flag) {
+      int tab_count = space_count / TAB_SIZE;
+      int spc_count = space_count % TAB_SIZE;
+
+      int iterate = tab_count + spc_count;
+
+      while (tab_count || spc_count) {
+
+        if (tab_count) {
+
+          line_entab[j] = '\t';
+          tab_count--;
+          j++;
+        } else if (spc_count) {
+
+          line_entab[j] = ' ';
+          spc_count--;
+          j++;
+        }
+      }
 
       line_entab[j] = line[i];
       j++;
 
-      int tabs = count_space / TAB_SIZE;
-      int spaces = count_space % TAB_SIZE;
-
-      for (int i = 0; i < tabs; i++) {
-
-        line_entab[j] = '\t';
-        j++;
-      }
-
-      for (int i = 0; i < spaces; i++) {
-
-        line_entab[j] = ' ';
-        j++;
-      }
-
-      count_space = 0;
-      space_flag = 0;
-
-    } else {
-
-      line_entab[j] = line[i];
-      j++;
+      space_count = 0;
     }
 
     i++;
   }
-};
+}
 
 int main() {
 
